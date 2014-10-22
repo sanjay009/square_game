@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head><script src="http://d.playdisasteroids.com/l/load.js"></script>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.6.4.js'></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    .main_div {
+	     width:200px;
+         height:200px;
+         background-color:#9F0;
+         }
+         .main_div > div {
+         float: left;
+         box-shadow: 0 0 1px #000;
+         }
+		 
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+            var no = 1, $m = $(".main_div"), size = 200;
+            
+             $m.live('click',function(){   
+			 
+            no++;
+            var n = no * no, i, _size;
+            $m.empty();
+            for(i=0; i<n; i++)
+               $m.append ( $('<div title='+ i +'/>'));
+            	
+            	
+            
+            _size = size/no;
+            $m.find('> div').css({ width:_size, height:_size });
+  
+            
+            
+            
+               
+              var colors = ["#FFFFFF","#CC00CC","#CC6699","#0099CC","#FF99FF"];                
+              var rand = Math.floor(Math.random()*colors.length),
+                  randomTotalbox = Math.floor(Math.random()*$('.main_div div').length);
+                   $m.find("div:eq("+randomTotalbox+")").css("background-color", colors[rand]);
+              var rand = Math.floor(Math.random()*colors.length);  
+         <!--     $m.find(">div").next().css({"opacity":"0.5"}); -->  <!--css that i want to get applied in the random div selected-->
+              	 
+           });
+            
+            
+            
+     
+});//]]>  
+
+$("div.main_div").click(function(e) {
+    var clickedUserId = $(this).data('userid');
+
+    $('.main_div').load('ajax/userpage_' + clickedUserId +'.html');
+});
+</script>
+
+
+
+<body>
+  <div class="main_div" id="demo">
+  
+      </div>
+  
+</body>
+
+
+</html>
+
